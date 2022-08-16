@@ -1,83 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Buona Vita Nutrición</title>
+		<link rel="icon" href="favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="css/index.css">
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Canvas</title>
-</head>
+	</head>
+	<body>
 
-<body>
-<canvas width="600" height="400"> </canvas>
+		<header>
+			<div class="container">
+				<h1>Buona Vita Nutrición</h1>
+			</div>
+		</header>
+		<main>
+			<section class="container">
+				<h2>Mis pacientes</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Peso(kg)</th>
+							<th>Altura(m)</th>
+							<th>Gordura Corporal(%)</th>
+							<th>IMC</th>
+						</tr>
+					</thead>
+					<tbody id="tabla-pacientes">
+						<tr class="paciente">
+							<td class="info-nombre">Pablo</td>
+							<td class="info-peso">100</td>
+							<td class="info-altura">2.00</td>
+							<td class="info-gordura">10</td>
+							<td class="info-imc">0</td>
+						</tr>
 
-<script>
+						<tr class="paciente" >
+							<td class="info-nombre">Juan</td>
+							<td class="info-peso">80</td>
+							<td class="info-altura">1.72</td>
+							<td class="info-gordura">40</td>
+							<td class="info-imc">0</td>
+						</tr>
 
-    var pantalla = document.querySelector("canvas");
-    var pincel = pantalla.getContext("2d");    
-    pincel.fillStyle = "lightgrey";
-    pincel.fillRect(0,0,600,400); 
+						<tr class="paciente" >
+							<td class="info-nombre">Erica</td>
+							<td class="info-peso">54</td>
+							<td class="info-altura">1.64</td>
+							<td class="info-gordura">14</td>
+							<td class="info-imc">0</td>
+						</tr>
 
-	var radio = 20;
-	var xAleatorio;
-	var yAleatorio;
+						<tr class="paciente">
+							<td class="info-nombre">Diego</td>
+							<td class="info-peso">85</td>
+							<td class="info-altura">1.73</td>
+							<td class="info-gordura">24</td>
+							<td class="info-imc">0</td>
+						</tr>
+						<tr class="paciente" >
+							<td class="info-nombre">Tatiana</td>
+							<td class="info-peso">46</td>
+							<td class="info-altura">1.55</td>
+							<td class="info-gordura">19</td>
+							<td class="info-imc">0</td>
+						</tr>
+					</tbody>
+				</table>
 
-		function disenarCircunferencia(x,y,radio,color){
-			pincel.fillStyle = color;
-			pincel.beginPath();
-			pincel.arc(x,y,radio,0,2*Math.PI);
-			pincel.fill();
-		}
-	
-		function limpiarPantalla(){
-			
-			pincel.clearRect(0,0,600,400);
-				
-		}
+			</section>
+		</main>
 
-		var x = 0;
-		
-		function disenarObjetivo(x,y){
-			
-			disenarCircunferencia(x,y,radio + 20,"red");	
-			disenarCircunferencia(x,y,radio + 10,"white");
-			disenarCircunferencia(x,y,radio,"red");
-		}
-		
-		function sortearPosicion(maximo){
-			
-			return Math.floor(Math.random()*maximo);
-			
-		}
-		
-		function actualizarPantalla(){
-			
-			limpiarPantalla();
-			xAleatorio = sortearPosicion(600);
-			yAleatorio = sortearPosicion(400);
-			disenarObjetivo(xAleatorio,yAleatorio);
-			x++;
-			
-		}
-		
-		setInterval(actualizarPantalla,2000);
-		
-		function disparar(evento){
-
-			var x = evento.pageX - pantalla.offsetLeft;
-			var y = evento.pagey - pantalla.offsetTop;
-			
-			if( (x < xAleatorio + radio) &&
-				(x > xAleatorio - radio) &&
-				(y < yAleatorio + radio) &&
-				(y > yAleatorio - radio)) {
-					alert("bueno");
-				}
-		}
-
-		pantalla.onclick = disparar;
-
-</script> 
-</body>
-
+	</body>
 </html>
